@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>重点项目工程</title>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_575164_q8br1zl1di.css">
+    <link rel="stylesheet" type="text/css" href="static/dhtmlxgantt/dhtmlxgantt.css"/>
+    <link rel="stylesheet" type="text/css" href='static/fullcalendar/fullcalendar.min.css' />
+		<link rel='stylesheet' type="text/css" href='static/fullcalendar/fullcalendar.print.min.css'  media='print' />
+		<script src='static/fullcalendar/lib/moment.min.js'></script>
+		<script src='static/fullcalendar/lib/jquery.min.js'></script>
+		<script src='static/fullcalendar/fullcalendar.min.js'></script>
+		<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+    <script src='http://cdn.bootcss.com/strophe.js/1.1.3/strophe.min.js'></script>
+   	<!--<script src="static/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>-->
+    <!--<script src="src/api/http.js" type="text/javascript" charset="utf-8"></script>-->
+    <script src="//at.alicdn.com/t/font_575164_q8br1zl1di.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	
+    	var ip = "http://keyprojectapi.biztest.top:8185"	//测试
+//  	var ip = "http://219.143.207.136:8086"						//生产
+    	window.onunload = onunload_message;
+     	function onunload_message(){
+     		if(window.XMLHttpRequest)//如果有XMLHttpRequest，那就是非IE6浏览器。()里面加window的原因下面会有描述。
+        {
+            var oAjax = new XMLHttpRequest();//创建ajax对象
+        }
+        else//如果没有XMLHttpRequest，那就是IE6浏览器
+        {
+            var oAjax = new ActiveXObject("Microsoft.XMLHTTP");//IE6浏览器创建ajax对象
+        }
+        oAjax.open("GET",ip + "/userInfo/updateLoginOutTime;JSESSIONID=" +　sessionStorage.getItem('JSESSIONID'),true);
+        
+        oAjax.send();
+        
+        oAjax.onreadystatechange = function(){
+        	if(oAjax.readyState == 4){
+        		if(oAjax.status == 200){
+        			console.log(oAjax.responseText)
+        		}
+        	}
+        }
+    	}   
+		</script>  
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <!--<script src="//at.alicdn.com/t/font_575164_3xrrrsg0s1hsemi.js" type="text/javascript" charset="utf-8"></script>-->
+  </body>
+</html>
+
